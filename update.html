@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создание заявки</title>
+</head>
+<body>
+    <from action="http://127.0.0.1:8000/update/" method="post">
+        <input required placeholder="namber" type="namber" name="namber"/><br/>
+        <input required placeholder="description" type="text" name="description"/><br/>
+        <input required placeholder="master" type="text" name="master"/><br/>
+        <label for="status">status</label><br/>
+        <select name="status">
+            <option></option>
+            <option>не выполнено</option>
+            <option>в работе</option>
+            <option>выполнено</option>
+        </select><br/>
+        <input type="submit" value="Создание" />
+    </from>
+</body>
+</html>
