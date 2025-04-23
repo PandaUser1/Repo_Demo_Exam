@@ -4,8 +4,19 @@
     <title>Создание заявки</title>
 </head>
 <body>
-    <from>
-
+    <from action="http://127.0.0.1:8000/orders/" method="post">
+        <input required placeholder="namber" type="namber" name="namber"/>
+        <input required placeholder="StartDate" type="date" name="StartDate"/>
+        <input required placeholder="device" type="text" name="device"/>
+        <input required placeholder="problemType" type="text" name="problemType"/>
+        <input required placeholder="description" type="text" name="description"/>
+        <input required placeholder="client" type="text" name="client"/>
+        <select name="status">
+            <option>в ожидании</option>
+            <option>в работе</option>
+            <option>выполнено</option>
+        </select>
+        <input type="submit" value="Создание" />
     </from>
 </body>
 </html>
