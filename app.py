@@ -11,6 +11,8 @@ class Order(BaseModel):
     client: str
     status: str
 
+repo = []
+
 app = FastAPI()
 
 @app.get("/")
