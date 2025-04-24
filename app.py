@@ -79,7 +79,7 @@ def update_order(dto: Annotated[UpdateOrderDTO, Form()]):
         if o.number == dto.number:
             if dto.status != o.status and dto.status != "":
                 o.status = dto.status
-                message += "Статус заявки №{o.namber} изменен"
+                message += f"Статус заявки №{o.namber} изменен"\n
             if dto.description != "":
                 o.description = dto.description
             if dto.master != "":
