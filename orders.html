@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список заявок</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Номер заявки</th>
+            <th>Дата добавления</th>
+            <th>Оборудование</th>
+            <th>Тип неисправности</th>
+            <th>Описание проблемы</th>
+            <th>Клиент</th>
+            <th>Статус заявки</th>
+            <th>Мастер</th>
+        </tr>
+    </table>
+    <script>
+        let table = document.querySelector("table");
+        GetOrders();
+
+        async function GetOrders() {
+            try {
+                let response = await fetch("http://localhost:8000/orders/");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                let data = await response.json();
+                let orders = data.repo; // Извлекаем массив заявок из ответа
+                console.log(orders);
+
+                // Добавляем строки в таблицу
+                orders.forEach(order => {
+                    let row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${order.number}</td>
+                        <td>${order.startDate}</td>
+                        <td>${order.device}</td>
+                        <td>${order.problemType}</td>
+                        <td>${order.description}</td>
+                        <td>${order.client}</td>
+                        <td>${order.status}</td>
+                        <td>${order.master}</td>
+                    `;
+                    table.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Ошибка при загрузке заявок:", error);
+            }
+        }
+    </script>
+</body>
+</html>
